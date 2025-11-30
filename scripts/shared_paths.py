@@ -17,7 +17,8 @@ except ImportError:
     EXT_PATH = FILE_DIR.joinpath("extensions").absolute()
 
 # Tags base path
-TAGS_PATH = Path(scripts.basedir()).joinpath("tags").absolute()
+# Use the extension's own directory to create the tags path
+TAGS_PATH = EXT_PATH.joinpath("a1111-sd-webui-tagcomplete", "tags").absolute()
 
 # The path to the folder containing the wildcards and embeddings
 try: # SD.Next

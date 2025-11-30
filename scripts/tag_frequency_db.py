@@ -1,7 +1,14 @@
+import os
 import sqlite3
+import sys
 from contextlib import contextmanager
 
-from scripts.shared_paths import TAGS_PATH
+# 添加脚本目录到 Python 路径
+script_dir = os.path.dirname(os.path.abspath(__file__))
+if script_dir not in sys.path:
+    sys.path.insert(0, script_dir)
+
+from shared_paths import TAGS_PATH
 
 db_file = TAGS_PATH.joinpath("tag_frequency.db")
 timeout = 30

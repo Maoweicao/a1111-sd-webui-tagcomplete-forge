@@ -4,6 +4,7 @@
 import glob
 import importlib
 import json
+import os
 import sqlite3
 import sys
 import urllib.parse
@@ -17,10 +18,15 @@ from fastapi.responses import FileResponse, JSONResponse, Response
 from modules import hashes, script_callbacks, sd_hijack, sd_models, shared
 from pydantic import BaseModel
 
-from scripts.model_keyword_support import (get_lora_simple_hash,
+# 添加脚本目录到 Python 路径
+script_dir = os.path.dirname(os.path.abspath(__file__))
+if script_dir not in sys.path:
+    sys.path.insert(0, script_dir)
+
+from model_keyword_support import (get_lora_simple_hash,
                                            load_hash_cache, update_hash_cache,
                                            write_model_keyword_path)
-from scripts.shared_paths import *
+from shared_paths import *
 
 try:
     try:
